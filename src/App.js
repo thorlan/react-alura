@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import $ from 'jquery';
-import InputCustomizado from './componentes/InputCustomizado';
-import SubmitCustomizado from './componentes/SubmitCustomizado';
+import AutorBox from './AutorBox';
 
 class App extends Component {
 
@@ -41,10 +40,10 @@ class App extends Component {
 
   }
 
-  limpaCampos(){
-    this.setState({nome: ''});
-    this.setState({email: ''});
-    this.setState({senha: ''});
+  limpaCampos() {
+    this.setState({ nome: '' });
+    this.setState({ email: '' });
+    this.setState({ senha: '' });
   }
 
   setNome(evento) {
@@ -99,45 +98,7 @@ class App extends Component {
           </div>
           <div className="content" id="content">
             <br />
-            <div className="pure-form pure-form-aligned">
-              <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
-
-                <InputCustomizado id="nome" label="Nome" type="text" name="name" value={this.state.nome}
-                  onChange={this.setNome} />
-
-                <InputCustomizado id="email" label="Email" type="email" name="email" value={this.state.email}
-                  onChange={this.setEmail} />
-
-                <InputCustomizado id="senha" label="Senha" type="password" name="senha" value={this.state.senha}
-                  onChange={this.setSenha} />
-
-                <SubmitCustomizado label="Gravar"/>
-
-              </form>
-
-            </div>
-            <div>
-              <table className="pure-table">
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    this.state.lista.map(function (autor) {
-                      return (
-                        <tr key={autor.id}>
-                          <td>{autor.nome}</td>
-                          <td>{autor.email}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
+              <AutorBox/>
           </div>
         </div>
 
